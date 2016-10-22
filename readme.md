@@ -52,7 +52,8 @@ Type: `Object`
 ##### concurrency
 
 Type: `number`<br>
-Default: `Infinity`
+Default: `Infinity`<br>
+Minimum: `1`
 
 Number of concurrent pending promises.
 
@@ -61,6 +62,7 @@ Number of concurrent pending promises.
 
 - [p-map](https://github.com/sindresorhus/p-map) - Map over promises concurrently
 - [p-props](https://github.com/sindresorhus/p-props) - Like `Promise.all()` but for `Map` and `Object`
+- [p-queue](https://github.com/sindresorhus/p-queue) - Promise queue with concurrency control
 - [p-limit](https://github.com/sindresorhus/p-limit) - Run multiple promise-returning & async functions with limited concurrency
 - [More…](https://github.com/sindresorhus/promise-fun)
 
