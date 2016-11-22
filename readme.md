@@ -4,7 +4,9 @@
 
 Similar to `Promise.all()`, but accepts functions instead of promises directly so you can limit the concurrency.
 
-If you're doing the same in each call, you should use [`p-map`](https://github.com/sindresorhus/p-map) instead.
+If you're doing the same work in each function, use [`p-map`](https://github.com/sindresorhus/p-map) instead.
+
+See [`p-series`](https://github.com/sindresorhus/p-series) for a serial counterpart.
 
 
 ## Install
@@ -35,11 +37,11 @@ pAll(actions, {concurrency: 2}).then(result => {
 
 ## API
 
-### pAll(input, [options])
+### pAll(tasks, [options])
 
-Returns a `Promise` that is fulfilled when all promises returned from calling the functions in `input` are fulfilled, or rejects if any of the promises reject. The fulfilled value is an `Array` of the fulfilled values in `input` order.
+Returns a `Promise` that is fulfilled when all promises returned from calling the functions in `tasks` are fulfilled, or rejects if any of the promises reject. The fulfilled value is an `Array` of the fulfilled values in `tasks` order.
 
-#### input
+#### tasks
 
 Type: `Iterable<Function>`
 
@@ -61,6 +63,7 @@ Number of concurrent pending promises.
 ## Related
 
 - [p-map](https://github.com/sindresorhus/p-map) - Map over promises concurrently
+- [p-series](https://github.com/sindresorhus/p-series) - Run promise-returning & async functions in series
 - [p-props](https://github.com/sindresorhus/p-props) - Like `Promise.all()` but for `Map` and `Object`
 - [p-queue](https://github.com/sindresorhus/p-queue) - Promise queue with concurrency control
 - [p-limit](https://github.com/sindresorhus/p-limit) - Run multiple promise-returning & async functions with limited concurrency
