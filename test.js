@@ -1,6 +1,6 @@
 import test from 'ava';
 import delay from 'delay';
-import m from './';
+import m from '.';
 
 // See `p-map` for more comprehensive tests
 test('main', async t => {
