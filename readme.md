@@ -12,7 +12,7 @@ See [`p-series`](https://github.com/sindresorhus/p-series) for a serial counterp
 ## Install
 
 ```
-$ npm install --save p-all
+$ npm install p-all
 ```
 
 
@@ -22,16 +22,16 @@ $ npm install --save p-all
 const pAll = require('p-all');
 const got = require('got');
 
-const actions = [
-	() => got('sindresorhus.com'),
-	() => got('ava.li'),
-	() => checkSomething(),
-	() => doSomethingElse()
-];
+(async () => {
+	const actions = [
+		() => got('https://sindresorhus.com'),
+		() => got('https://ava.li'),
+		() => checkSomething(),
+		() => doSomethingElse()
+	];
 
-pAll(actions, {concurrency: 2}).then(result => {
-	console.log(result);
-});
+	console.log(await pAll(actions, {concurrency: 2}));
+})();
 ```
 
 

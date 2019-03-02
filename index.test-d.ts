@@ -7,8 +7,8 @@ const actions: [
 	() => Promise<void>,
 	() => Promise<number>
 ] = [
-	() => Promise.resolve('sindresorhus.com'),
-	() => Promise.resolve('ava.li'),
+	() => Promise.resolve('https://sindresorhus.com'),
+	() => Promise.resolve('https://ava.li'),
 	() => Promise.resolve(),
 	() => Promise.resolve(1)
 ];
