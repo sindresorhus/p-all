@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import pAll from '.';
+import {expectType} from 'tsd';
+import pAll = require('.');
 
 const actions: [
 	() => Promise<string>,
