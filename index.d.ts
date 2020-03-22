@@ -1,12 +1,5 @@
 declare namespace pAll {
-	interface Options {
-		/**
-		Number of concurrent pending promises. Minimum: `1`.
-
-		@default Infinity
-		*/
-		concurrency?: number;
-	}
+	type Options = import('p-map').Options;
 
 	type PromiseFactory<T> = () => PromiseLike<T>;
 }
