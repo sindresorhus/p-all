@@ -4,6 +4,7 @@ declare namespace pAll {
 	type PromiseFactory<T> = () => PromiseLike<T>;
 }
 
+// TODO: Refactor the whole definition back to multiple overloaded functions
 /**
 Run promise-returning & async functions concurrently with optional limited concurrency.
 
@@ -54,18 +55,18 @@ declare const pAll: {
 		],
 		options?: pAll.Options
 	): Promise<
-		[
-			Result1,
-			Result2,
-			Result3,
-			Result4,
-			Result5,
-			Result6,
-			Result7,
-			Result8,
-			Result9,
-			Result10
-		]
+	[
+		Result1,
+		Result2,
+		Result3,
+		Result4,
+		Result5,
+		Result6,
+		Result7,
+		Result8,
+		Result9,
+		Result10
+	]
 	>;
 	<
 		Result1,
@@ -91,17 +92,17 @@ declare const pAll: {
 		],
 		options?: pAll.Options
 	): Promise<
-		[
-			Result1,
-			Result2,
-			Result3,
-			Result4,
-			Result5,
-			Result6,
-			Result7,
-			Result8,
-			Result9
-		]
+	[
+		Result1,
+		Result2,
+		Result3,
+		Result4,
+		Result5,
+		Result6,
+		Result7,
+		Result8,
+		Result9
+	]
 	>;
 	<Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8>(
 		tasks: [
@@ -116,7 +117,7 @@ declare const pAll: {
 		],
 		options?: pAll.Options
 	): Promise<
-		[Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8]
+	[Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8]
 	>;
 	<Result1, Result2, Result3, Result4, Result5, Result6, Result7>(
 		tasks: [
@@ -177,12 +178,9 @@ declare const pAll: {
 		options?: pAll.Options
 	): Promise<[Result1]>;
 	<TAll>(
-		tasks: Iterable<pAll.PromiseFactory<TAll>> | pAll.PromiseFactory<TAll>[],
+		tasks: Iterable<pAll.PromiseFactory<TAll>> | Array<pAll.PromiseFactory<TAll>>,
 		options?: pAll.Options
 	): Promise<TAll[]>;
-
-	// TODO: Remove this for the next major release, refactor the whole definition back to multiple overloaded functions
-	default: typeof pAll;
 };
 
 export = pAll;

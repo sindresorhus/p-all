@@ -4,13 +4,14 @@
 	"description": "Run promise-returning & async functions concurrently with optional limited concurrency",
 	"license": "MIT",
 	"repository": "sindresorhus/p-all",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=6"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -48,7 +49,7 @@
 	"devDependencies": {
 		"ava": "^1.4.1",
 		"delay": "^4.1.0",
-		"tsd": "^0.7.2",
-		"xo": "^0.24.0"
+		"tsd": "^0.11.0",
+		"xo": "^0.28.0"
 	}
 }

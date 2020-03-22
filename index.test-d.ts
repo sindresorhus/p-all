@@ -7,10 +7,10 @@ const actions: [
 	() => Promise<void>,
 	() => Promise<number>
 ] = [
-	() => Promise.resolve('https://sindresorhus.com'),
-	() => Promise.resolve('https://ava.li'),
-	() => Promise.resolve(),
-	() => Promise.resolve(1)
+	async () => Promise.resolve('https://sindresorhus.com'),
+	async () => Promise.resolve('https://ava.li'),
+	async () => Promise.resolve(),
+	async () => Promise.resolve(1)
 ];
 
 const result = await pAll(actions, {concurrency: 2});

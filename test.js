@@ -2,7 +2,7 @@ import test from 'ava';
 import delay from 'delay';
 import pAll from '.';
 
-// See `p-map` for more comprehensive tests
+// See `p-map` for more comprehensive tests.
 test('main', async t => {
 	const input = [
 		async () => 1,
