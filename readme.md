@@ -1,4 +1,4 @@
-# p-all [![Build Status](https://travis-ci.org/sindresorhus/p-all.svg?branch=master)](https://travis-ci.org/sindresorhus/p-all)
+# p-all
 
 > Run promise-returning & async functions concurrently with optional limited concurrency
 
