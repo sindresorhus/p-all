@@ -34,6 +34,6 @@ import got = require('got');
 declare const pAll: <Task extends Array<pAll.PromiseFactory<unknown>>>(
 	tasks: readonly [...Task],
 	options?: pAll.Options,
-) => Promise<{ [P in keyof Task]: Task[P] extends () => unknown ? Awaited<ReturnType<Task[P]>> : Task[P] }>;
+) => Promise<{ [P in keyof Task]: Task[P] extends () => unknown ? pAll.Awaited<ReturnType<Task[P]>> : Task[P] }>;
 
 export = pAll;
