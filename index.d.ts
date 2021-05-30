@@ -2,6 +2,9 @@ declare namespace pAll {
 	type Options = import('p-map').Options;
 
 	type PromiseFactory<T> = () => PromiseLike<T>;
+
+	// From: https://github.com/microsoft/TypeScript/blob/4f5b3299fee9a54b692aba9df7a9e894bd86e81d/src/lib/es2015.promise.d.ts#L1
+	type Awaited<T> = T extends undefined ? T : T extends PromiseLike<infer U> ? U : T;
 }
 
 // TODO: Refactor the whole definition back to multiple overloaded functions
@@ -29,158 +32,10 @@ import got = require('got');
 ```
 */
 declare const pAll: {
-	<
-		Result1,
-		Result2,
-		Result3,
-		Result4,
-		Result5,
-		Result6,
-		Result7,
-		Result8,
-		Result9,
-		Result10
-	>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>,
-			pAll.PromiseFactory<Result5>,
-			pAll.PromiseFactory<Result6>,
-			pAll.PromiseFactory<Result7>,
-			pAll.PromiseFactory<Result8>,
-			pAll.PromiseFactory<Result9>,
-			pAll.PromiseFactory<Result10>
-		],
-		options?: pAll.Options
-	): Promise<
-	[
-		Result1,
-		Result2,
-		Result3,
-		Result4,
-		Result5,
-		Result6,
-		Result7,
-		Result8,
-		Result9,
-		Result10
-	]
-	>;
-	<
-		Result1,
-		Result2,
-		Result3,
-		Result4,
-		Result5,
-		Result6,
-		Result7,
-		Result8,
-		Result9
-	>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>,
-			pAll.PromiseFactory<Result5>,
-			pAll.PromiseFactory<Result6>,
-			pAll.PromiseFactory<Result7>,
-			pAll.PromiseFactory<Result8>,
-			pAll.PromiseFactory<Result9>
-		],
-		options?: pAll.Options
-	): Promise<
-	[
-		Result1,
-		Result2,
-		Result3,
-		Result4,
-		Result5,
-		Result6,
-		Result7,
-		Result8,
-		Result9
-	]
-	>;
-	<Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>,
-			pAll.PromiseFactory<Result5>,
-			pAll.PromiseFactory<Result6>,
-			pAll.PromiseFactory<Result7>,
-			pAll.PromiseFactory<Result8>
-		],
-		options?: pAll.Options
-	): Promise<
-	[Result1, Result2, Result3, Result4, Result5, Result6, Result7, Result8]
-	>;
-	<Result1, Result2, Result3, Result4, Result5, Result6, Result7>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>,
-			pAll.PromiseFactory<Result5>,
-			pAll.PromiseFactory<Result6>,
-			pAll.PromiseFactory<Result7>
-		],
-		options?: pAll.Options
-	): Promise<[Result1, Result2, Result3, Result4, Result5, Result6, Result7]>;
-	<Result1, Result2, Result3, Result4, Result5, Result6>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>,
-			pAll.PromiseFactory<Result5>,
-			pAll.PromiseFactory<Result6>
-		],
-		options?: pAll.Options
-	): Promise<[Result1, Result2, Result3, Result4, Result5, Result6]>;
-	<Result1, Result2, Result3, Result4, Result5>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>,
-			pAll.PromiseFactory<Result5>
-		],
-		options?: pAll.Options
-	): Promise<[Result1, Result2, Result3, Result4, Result5]>;
-	<Result1, Result2, Result3, Result4>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>,
-			pAll.PromiseFactory<Result4>
-		],
-		options?: pAll.Options
-	): Promise<[Result1, Result2, Result3, Result4]>;
-	<Result1, Result2, Result3>(
-		tasks: [
-			pAll.PromiseFactory<Result1>,
-			pAll.PromiseFactory<Result2>,
-			pAll.PromiseFactory<Result3>
-		],
-		options?: pAll.Options
-	): Promise<[Result1, Result2, Result3]>;
-	<Result1, Result2>(
-		tasks: [pAll.PromiseFactory<Result1>, pAll.PromiseFactory<Result2>],
-		options?: pAll.Options
-	): Promise<[Result1, Result2]>;
-	<Result1>(
-		tasks: [pAll.PromiseFactory<Result1>],
-		options?: pAll.Options
-	): Promise<[Result1]>;
-	<TAll>(
-		tasks: Iterable<pAll.PromiseFactory<TAll>> | Array<pAll.PromiseFactory<TAll>>,
-		options?: pAll.Options
-	): Promise<TAll[]>;
+	<Task extends pAll.PromiseFactory<unknown>[]>(
+		tasks: readonly [...Task],
+		options?: pAll.Options,
+	): Promise<{ [P in keyof Task]: Awaited<ReturnType<Task[P]>> }>
 };
 
 export = pAll;
