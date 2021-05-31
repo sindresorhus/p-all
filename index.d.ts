@@ -1,13 +1,10 @@
-declare namespace pAll {
-	type Options = import('p-map').Options;
+import {Options} from 'p-map';
 
-	type PromiseFactory<T> = () => PromiseLike<T>;
+type PromiseFactory<T> = () => PromiseLike<T>;
 
-	// From: https://github.com/microsoft/TypeScript/blob/4f5b3299fee9a54b692aba9df7a9e894bd86e81d/src/lib/es2015.promise.d.ts#L1
-	type Awaited<T> = T extends undefined ? T : T extends PromiseLike<infer U> ? U : T;
-}
+// From: https://github.com/microsoft/TypeScript/blob/4f5b3299fee9a54b692aba9df7a9e894bd86e81d/src/lib/es2015.promise.d.ts#L1
+type Awaited<T> = T extends undefined ? T : T extends PromiseLike<infer U> ? U : T;
 
-// TODO: Refactor the whole definition back to multiple overloaded functions
 /**
 Run promise-returning & async functions concurrently with optional limited concurrency.
 
@@ -16,24 +13,24 @@ Run promise-returning & async functions concurrently with optional limited concu
 
 @example
 ```
-import pAll = require('p-all');
-import got = require('got');
+import pAll from 'p-all';
+import got from 'got';
 
-(async () => {
-	const actions = [
-		() => got('https://sindresorhus.com'),
-		() => got('https://ava.li'),
-		() => checkSomething(),
-		() => doSomethingElse()
-	];
+const actions = [
+	() => got('https://sindresorhus.com'),
+	() => got('https://avajs.dev'),
+	() => checkSomething(),
+	() => doSomethingElse()
+];
 
-	console.log(await pAll(actions, {concurrency: 2}));
-})();
+console.log(await pAll(actions, {concurrency: 2}));
 ```
 */
-declare const pAll: <Task extends Array<pAll.PromiseFactory<unknown>>>(
+export default function pAll<Task extends Array<PromiseFactory<unknown>>>(
 	tasks: readonly [...Task],
-	options?: pAll.Options,
-) => Promise<{ [P in keyof Task]: Task[P] extends () => unknown ? pAll.Awaited<ReturnType<Task[P]>> : Task[P] }>;
+	options?: Options,
+): Promise<{
+	[P in keyof Task]: Task[P] extends () => unknown ? Awaited<ReturnType<Task[P]>> : Task[P]
+}>;
 
-export = pAll;
+export {Options};

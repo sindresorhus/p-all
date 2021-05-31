@@ -17,19 +17,17 @@ $ npm install p-all
 ## Usage
 
 ```js
-const pAll = require('p-all');
-const got = require('got');
+import pAll from 'p-all';
+import got from 'got';
 
-(async () => {
-	const actions = [
-		() => got('https://sindresorhus.com'),
-		() => got('https://ava.li'),
-		() => checkSomething(),
-		() => doSomethingElse()
-	];
+const actions = [
+	() => got('https://sindresorhus.com'),
+	() => got('https://avajs.dev'),
+	() => checkSomething(),
+	() => doSomethingElse()
+];
 
-	console.log(await pAll(actions, {concurrency: 2}));
-})();
+console.log(await pAll(actions, {concurrency: 2}));
 ```
 
 ## API

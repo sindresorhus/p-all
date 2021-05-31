@@ -1,5 +1,5 @@
 import {expectType} from 'tsd';
-import pAll = require('.');
+import pAll from './index.js';
 
 const actions: [
 	() => Promise<string>,
@@ -8,7 +8,7 @@ const actions: [
 	() => Promise<number>
 ] = [
 	async () => Promise.resolve('https://sindresorhus.com'),
-	async () => Promise.resolve('https://ava.li'),
+	async () => Promise.resolve('https://avajs.dev'),
 	async () => Promise.resolve(),
 	async () => Promise.resolve(1)
 ];

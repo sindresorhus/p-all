@@ -1,4 +1,5 @@
-'use strict';
-const pMap = require('p-map');
+import pMap from 'p-map';
 
-module.exports = (iterable, options) => pMap(iterable, element => element(), options);
+export default async function pAll(iterable, options) {
+	return pMap(iterable, element => element(), options);
+}
