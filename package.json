@@ -1,6 +1,6 @@
 {
 	"name": "p-all",
-	"version": "3.0.0",
+	"version": "4.0.0",
 	"description": "Run promise-returning & async functions concurrently with optional limited concurrency",
 	"license": "MIT",
 	"repository": "sindresorhus/p-all",
