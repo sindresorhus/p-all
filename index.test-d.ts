@@ -5,12 +5,12 @@ const actions: [
 	() => Promise<string>,
 	() => Promise<string>,
 	() => Promise<void>,
-	() => Promise<number>
+	() => Promise<number>,
 ] = [
-	async () => Promise.resolve('https://sindresorhus.com'),
-	async () => Promise.resolve('https://avajs.dev'),
-	async () => Promise.resolve(),
-	async () => Promise.resolve(1)
+	async () => 'https://sindresorhus.com',
+	async () => 'https://avajs.dev',
+	async () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+	async () => 1,
 ];
 
 const result = await pAll(actions, {concurrency: 2});

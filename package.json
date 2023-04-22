@@ -13,7 +13,7 @@
 	"type": "module",
 	"exports": "./index.js",
 	"engines": {
-		"node": ">=12.20"
+		"node": ">=16"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -46,12 +46,12 @@
 		"bluebird"
 	],
 	"dependencies": {
-		"p-map": "^5.0.0"
+		"p-map": "^6.0.0"
 	},
 	"devDependencies": {
-		"ava": "^3.15.0",
+		"ava": "^5.2.0",
 		"delay": "^5.0.0",
-		"tsd": "^0.16.0",
-		"xo": "^0.40.1"
+		"tsd": "^0.28.1",
+		"xo": "^0.54.1"
 	}
 }

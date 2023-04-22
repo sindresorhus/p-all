@@ -11,7 +11,7 @@ test('main', async t => {
 			return 2;
 		},
 		() => 3,
-		async () => 4
+		async () => 4,
 	];
 
 	t.deepEqual(await pAll(input), [1, 2, 3, 4]);

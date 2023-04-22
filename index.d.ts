@@ -1,9 +1,6 @@
-import {Options} from 'p-map';
+import {type Options} from 'p-map';
 
 type PromiseFactory<T> = () => PromiseLike<T>;
-
-// From: https://github.com/microsoft/TypeScript/blob/4f5b3299fee9a54b692aba9df7a9e894bd86e81d/src/lib/es2015.promise.d.ts#L1
-type Awaited<T> = T extends undefined ? T : T extends PromiseLike<infer U> ? U : T;
 
 /**
 Run promise-returning & async functions concurrently with optional limited concurrency.
@@ -33,4 +30,4 @@ export default function pAll<Task extends Array<PromiseFactory<unknown>>>(
 	[P in keyof Task]: Task[P] extends () => unknown ? Awaited<ReturnType<Task[P]>> : Task[P]
 }>;
 
-export {Options};
+export {type Options} from 'p-map';

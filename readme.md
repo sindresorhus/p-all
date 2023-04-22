@@ -10,8 +10,8 @@ See [`p-series`](https://github.com/sindresorhus/p-series) for a serial counterp
 
 ## Install
 
-```
-$ npm install p-all
+```sh
+npm install p-all
 ```
 
 ## Usage
@@ -59,7 +59,7 @@ Number of concurrent pending promises.
 Type: `boolean`\
 Default: `true`
 
-When set to `false`, instead of stopping when a promise rejects, it will wait for all the promises to settle and then reject with an [aggregated error](https://github.com/sindresorhus/aggregate-error) containing all the errors from the rejected promises.
+When set to `false`, instead of stopping when a promise rejects, it will wait for all the promises to settle and then reject with an [`AggregateError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError) containing all the errors from the rejected promises.
 
 ## Related
 
