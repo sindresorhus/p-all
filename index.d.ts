@@ -1,7 +1,5 @@
 import {type Options} from 'p-map';
 
-type PromiseFactory<T> = () => PromiseLike<T>;
-
 /**
 Run promise-returning & async functions concurrently with optional limited concurrency.
 
@@ -23,11 +21,11 @@ const actions = [
 console.log(await pAll(actions, {concurrency: 2}));
 ```
 */
-export default function pAll<Task extends Array<PromiseFactory<unknown>>>(
-	tasks: readonly [...Task],
+export default function pAll<Tasks extends ReadonlyArray<() => unknown>>(
+	tasks: readonly [...Tasks],
 	options?: Options,
 ): Promise<{
-	[P in keyof Task]: Task[P] extends () => unknown ? Awaited<ReturnType<Task[P]>> : Task[P]
+	[K in keyof Tasks]: Awaited<ReturnType<Tasks[K]>>
 }>;
 
 export {type Options} from 'p-map';

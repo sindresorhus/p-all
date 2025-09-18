@@ -59,13 +59,13 @@ Number of concurrently pending promises.
 Type: `boolean`\
 Default: `true`
 
-When set to `false`, instead of stopping when a promise rejects, it will wait for all the promises to settle and then reject with an [`AggregateError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError) containing all the errors from the rejected promises.
+When set to `false`, instead of stopping when a promise rejects, it will wait for all the promises to settle and then reject with an [`AggregateError`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AggregateError) containing all the errors from the rejected promises.
 
 ##### signal
 
-Type: [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)
+Type: [`AbortSignal`](https://developer.mozilla.org/docs/Web/API/AbortSignal)
 
-You can abort the promises using [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
+You can abort the promises using [`AbortController`](https://developer.mozilla.org/docs/Web/API/AbortController).
 
 ## Related
 

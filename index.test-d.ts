@@ -48,15 +48,27 @@ expectType<number>(result[3]);
 	expectType<{n: number}>(result2[1]);
 }
 
-// Doesn't work: https://github.com/sindresorhus/p-all/issues/15
-// {
-// 	const numbers3 = [1, 2];
-// 	const result3 = await pAll(numbers3.map(
-// 		n => () =>
-// 			Promise.resolve().then(() => ({
-// 				n,
-// 			}))), {concurrency: 2});
+{
+	const numbers3 = [1, 2];
+	const result3 = await pAll(numbers3.map(
+		n => async () =>
+			Promise.resolve().then(() => ({
+				n,
+			}))), {concurrency: 2});
 
-// 	expectType<{n: number}>(result3[0]);
-// 	expectType<{n: number}>(result3[1]);
-// }
+	expectType<{n: number}>(result3[0]);
+	expectType<{n: number}>(result3[1]);
+}
+
+{
+	const numbers4 = [1, 2];
+	const result4 = await pAll(numbers4.map(
+		// eslint-disable-next-line @typescript-eslint/promise-function-async
+		n => () =>
+			Promise.resolve().then(() => ({
+				n,
+			}))), {concurrency: 2});
+
+	expectType<{n: number}>(result4[0]);
+	expectType<{n: number}>(result4[1]);
+}
