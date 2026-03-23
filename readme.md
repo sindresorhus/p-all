@@ -2,7 +2,7 @@
 
 > Run promise-returning & async functions concurrently with optional limited concurrency
 
-Similar to `Promise.all()`, but accepts functions instead of promises directly so you can limit the concurrency.
+Similar to `Promise.all()`, but accepts functions instead of promises directly, so you can limit concurrency.
 
 If you're doing the same work in each function, use [`p-map`](https://github.com/sindresorhus/p-map) instead.
 
